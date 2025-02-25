@@ -38,7 +38,7 @@
     <script>
         (function() {
             var countikWidget = document.createElement('script');
-            countikWidget.src = 'https://cors-anywhere.herokuapp.com/https://countik.com/widget.js'; // Utilisation du proxy
+            countikWidget.src = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://countik.com/widget.js'); // Utilisation d'All Origins
             countikWidget.async = true;
             countikWidget.onload = function() {
                 if (typeof window.initializeCountikWidget === 'function') {
