@@ -8,6 +8,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -15,14 +16,29 @@
             color: white;
             font-family: Arial, sans-serif;
         }
+        #countik-widget {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            margin: 0;
+        }
+        p {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div id="countik-widget"></div>
+    <h1>Compteur TikTok</h1>
+    <p>Suivez vos statistiques et votre croissance sur TikTok !</p>
+    <div id="countik-widget">Chargement du compteur...</div>
     <script>
         (function() {
             var countikWidget = document.createElement('script');
-            countikWidget.src = 'https://countik.com/widget.js';
+            countikWidget.src = 'https://cors-anywhere.herokuapp.com/https://countik.com/widget.js'; // Utilisation du proxy
             countikWidget.async = true;
             countikWidget.onload = function() {
                 if (typeof window.initializeCountikWidget === 'function') {
