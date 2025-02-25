@@ -44,14 +44,16 @@
                 if (typeof window.initializeCountikWidget === 'function') {
                     window.initializeCountikWidget({
                         container: '#countik-widget',
-                        themeColor: '#ffffff',
+                        themeColor: '#444444',
                         uniqueId: 'collectionneurdemonnaie',
-                        language: 'fr'
+                        language: 'en'
                     });
                 }
             };
-            document.body.appendChild(countikWidget);
+            var firstScript = document.getElementsByTagName('script')[0];
+            firstScript.parentNode.insertBefore(countikWidget, firstScript);
         })();
     </script>
+    <a href="https://countik.com/user/collectionneurdemonnaie" target="_blank" class="pow-countik" style="font-size:11px;color:#333;display:block;padding:4px 3px;text-decoration:none;">Powered by Countik™</a>
 </body>
 </html>
