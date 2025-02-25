@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    </style>
+</head>
+<body>
+    <div id="countik-widget"></div>
+    <script>
+        (function() {
+            var countikWidget = document.createElement('script');
+            countikWidget.src = 'https://countik.com/widget.js';
+            countikWidget.async = true;
+            countikWidget.onload = function() {
+                if (typeof window.initializeCountikWidget === 'function') {
+                    window.initializeCountikWidget({
+                        container: '#countik-widget',
+                        themeColor: '#444444',
+                        uniqueId: 'collectionneurdemonnaie',
+                        language: 'fr'
+                    });
+                }
+            };
+            document.body.appendChild(countikWidget);
+        })();
+    </script>
+</body>
+</html>
