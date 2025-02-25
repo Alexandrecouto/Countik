@@ -29,16 +29,21 @@
         p {
             text-align: center;
         }
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>Compteur TikTok</h1>
     <p>Suivez vos statistiques et votre croissance sur TikTok !</p>
     <div id="countik-widget">Chargement du compteur...</div>
+    <div class="error" id="error-message" style="display: none;"></div>
     <script>
         (function() {
             var countikWidget = document.createElement('script');
-            countikWidget.src = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://countik.com/widget.js'); // Utilisation d'All Origins
+            countikWidget.src = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://countik.com/widget.js');
             countikWidget.async = true;
             countikWidget.onload = function() {
                 if (typeof window.initializeCountikWidget === 'function') {
@@ -48,11 +53,23 @@
                         uniqueId: 'collectionneurdemonnaie',
                         language: 'en'
                     });
+                } else {
+                    displayError("Erreur de chargement du compteur.");
                 }
+            };
+            countikWidget.onerror = function() {
+                displayError("Erreur lors du chargement du script.");
             };
             var firstScript = document.getElementsByTagName('script')[0];
             firstScript.parentNode.insertBefore(countikWidget, firstScript);
         })();
+
+        function displayError(message) {
+            document.getElementById('countik-widget').style.display = 'none';
+            var errorMessage = document.getElementById('error-message');
+            errorMessage.innerText = message;
+            errorMessage.style.display = 'block';
+        }
     </script>
     <a href="https://countik.com/user/collectionneurdemonnaie" target="_blank" class="pow-countik" style="font-size:11px;color:#333;display:block;padding:4px 3px;text-decoration:none;">Powered by Countik™</a>
 </body>
